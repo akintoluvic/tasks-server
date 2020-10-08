@@ -1,0 +1,53 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\WINDOWS\System32\OpenSSH\;C:\php737;C:\ProgramData\ComposerSetup\bin;C:\Program Files\PostgreSQL\12\bin;C:\Program Files\nodejs\;C:\flutter\bin;C:\Program Files (x86)\Yarn\bin\;C:\Users\YOGA 12\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\YOGA 12\AppData\Local\GitHubDesktop\bin;C:\Users\YOGA 12\AppData\Local\Microsoft\WindowsApps;C:\php737;C:\Users\YOGA 12\AppData\Roaming\Composer\vendor\bin;C:\Users\YOGA 12\AppData\Local\Android\Sdk;C:\Users\YOGA 12\AppData\Roaming\npm;C:\flutter\bin;C:\Users\YOGA 12\AppData\Local\Yarn\bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.14.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\Users\YOGA 12\Documents\GitHub\tasks-server\package.json: Unexpected token } in JSON at position 281
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+      "name": "tasks-server",
+      "version": "1.0.0",
+      "description": "A basic accounting MERN stack app",
+      "main": "server.js",
+      "scripts": {
+        "start": "node server",
+        "server": "nodemon server",
+        "test": "echo \"Error: no test specified\" && exit 1",
+      },
+      "author": "Vick Greenfields",
+      "license": "ISC",
+      "dependencies": {
+        "colors": "^1.4.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.9.2",
+        "morgan": "^1.9.1"
+      },
+      "devDependencies": {
+        "nodemon": "^2.0.2"
+      }
+    }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
