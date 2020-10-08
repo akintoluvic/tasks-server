@@ -20,6 +20,25 @@ exports.getTasks = async (req, res, next) => {
     }
 }
 
+// @desc    Get all tasks
+// @route   GET /api/v1/tasks
+// @access  Public
+exports.getTask = async (req, res, next) => {
+    try {
+        const task = await Task.findById(req.params.id);
+
+        return res.status(200).json({
+            success: true,
+            data: task
+        })
+    } catch (err) {
+        return res.send(500).json({
+            success: false,
+            error: 'Server Error'
+        })
+    }
+}
+
 // @desc    Add tasks
 // @route   POST /api/v1/tasks
 // @access  Public
@@ -47,6 +66,7 @@ exports.addTasks = async (req, res, next) => {
         }
     }
 }
+
 
 // @desc    Delete tasks
 // @route   DELETE /api/v1/tasks/:id
