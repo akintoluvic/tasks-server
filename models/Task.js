@@ -14,7 +14,8 @@ const TaskSchema = new mongoose.Schema({
         required: [true, 'Please add some text']
     },
     userid: {
-        type: Number,
+        type: String,
+        trim: true,
         required: [true, 'Please add a positive or negative number']
     },
     createdAt: {

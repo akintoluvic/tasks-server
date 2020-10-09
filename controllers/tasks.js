@@ -39,6 +39,26 @@ exports.getTask = async (req, res, next) => {
     }
 }
 
+// @desc    Get all tasks by a user
+// @route   GET /api/v1/tasks
+// @access  Public
+exports.getTasksByUser = async (req, res, next) => {
+    try {
+        const tasks = await Task.find({"userid": req.params.id});
+        
+        return res.status(200).json({
+            success: true,
+            data: tasks
+        })
+    } catch (err) {
+        console.log(err)
+        return res.sendStatus(500).json({
+            success: false,
+            error: 'Server Error'
+        })
+    }
+}
+
 // @desc    Add tasks
 // @route   POST /api/v1/tasks
 // @access  Public
@@ -68,25 +88,56 @@ exports.addTasks = async (req, res, next) => {
 }
 
 
+// @desc    Update a task
+// @route   PUT /api/v1/tasks
+// @access  Public
+exports.putTask = async (req, res, next) => {
+    const id = req.params.id
+
+    try {
+        const task = await Task.findByIdAndUpdate(id, req.body);
+
+        return res.status(200).json({
+            success: true,
+            message: "Task updated"
+        })
+    } catch (err) {
+        return res.sendStatus(500).json({
+            success: false,
+            error: 'Server Error'
+        })
+    }
+}
+
+
 // @desc    Delete tasks
 // @route   DELETE /api/v1/tasks/:id
 // @access  Public
 exports.deleteTasks = async (req, res, next) => {
     try {
-        const task = await Task.findById(req.params.id);
-        if(!transaction) {
-            res.status(404).json({
-                success: false,
-                error: 'Task does not exist'
-            })
-        } 
-        await task.remove();
+        await Task.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+              message: 'The task was deleted successfully from the database'
+            });
+            
+    } catch (error) {
+        return next(err)
+    }
+}
+
+// @desc    Delete tasks by user
+// @route   DELETE /api/v1/tasks/user/:id
+// @access  Public
+exports.deleteTasksByUser = async (req, res, next) => {
+    try {
+        const tasks = await Task.remove({"userid": req.params.id});
         return res.status(200).json({
             success: true,
-            data: []
+            message: "Delete successful"
         })
-    } catch (error) {
-        return res.send(500).json({
+    } catch (err) {
+        console.log(err)
+        return res.sendStatus(500).json({
             success: false,
             error: 'Server Error'
         })

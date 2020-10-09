@@ -1,7 +1,7 @@
 {
     "name": "tasks-server",
     "version": "1.0.0",
-    "description": "A basic accounting MERN stack app",
+    "description": "Bunny Tasks Users Apis",
     "main": "server.js",
     "scripts": {
       "start": "node server",
